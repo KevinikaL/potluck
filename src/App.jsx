@@ -1,27 +1,17 @@
 
-import { useState } from 'react'
-import { supabase } from './utils/supabase'
+import  useTable  from './useTable.js'
 import MealCard from './MealCard.jsx'
 import './App.css'
 
 
 function App() {
-  const [meals, setMeals] = useState([])
 
-  const loadMeals = async () => {
-    const { data, error } = await supabase.from("meals").select()
-    if (error) {
-      console.log(error.message)
-      return
-    }
-    setMeals(data)
-  }
+    const { data } = useTable("meals")
 
   return (
     <div>
       <h1>Potluck</h1>
-      <button onClick={loadMeals}>Load</button>
-      {meals.map((meal) => <MealCard key={meal.id} meal={meal} />)}
+      {data.map((meal) => <MealCard key={meal.id} meal={meal} />)}
     </div>
   )
 }

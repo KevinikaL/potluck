@@ -1,0 +1,15 @@
+
+.card {
+  color: #0c0a00;
+  max-width: 400px;
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 2px solid #c9a227;
+  border-radius: 8px;
+  background-color: #fff8e1;
+}
+
+.card h2 {
+  color: #c9a227;
+  margin-top: 0;
+}

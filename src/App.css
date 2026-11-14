@@ -1,4 +1,10 @@
-
+body{
+    background-color: brown;
+}
+h1{
+    color: #c9a227;
+    font-family:cursive;
+}
 .card {
   color: #0c0a00;
   max-width: 400px;

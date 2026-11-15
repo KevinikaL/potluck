@@ -5,6 +5,9 @@ h1{
     color: #c9a227;
     font-family:cursive;
 }
+P{
+    color: #c9a227;
+}
 .card {
   color: #0c0a00;
   max-width: 400px;
@@ -18,4 +21,8 @@ h1{
 .card h2 {
   color: #c9a227;
   margin-top: 0;
+}
+button{
+    color:brown;
+    background-color:#fff8e1;
 }

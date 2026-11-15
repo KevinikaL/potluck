@@ -14,3 +14,13 @@ The React Compiler is not enabled on this template because of its impact on dev 
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+
+## Where the data lives
+
+The meals live in a table called `meals` in my Supabase project.
+
+The page reads and writes to this table using the Supabase publishable key. Row Level Security is off, so anyone with the key can read, add, change, and remove a meal.
+
+The project's URL and publishable key are stored in `.env.local` on my laptop and will be added to Netlify's environment variables when deployed. These values are not stored in my GitHub repository.
+

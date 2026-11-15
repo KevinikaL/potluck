@@ -1,4 +1,5 @@
 
+import { useState } from 'react'
 import  useTable  from './useTable.js'
 import { supabase } from './utils/supabase'
 import MealCard from './MealCard.jsx'
@@ -8,6 +9,7 @@ import './App.css'
 function App() {
 
     const { data, error, reload } = useTable("meals")
+    const [newestMeals, setNewestMeals] = useState([])
     const totalServings = data.reduce((total, meal) => total + meal.serves, 0)
     const addMeal = async (event) => {
       event.preventDefault()
@@ -38,6 +40,22 @@ function App() {
 }
 
 
+const loadNewest = async () => {
+  const { data, error } = await supabase
+    .from("meals")
+    .select()
+    .order("created_at", { ascending: false })
+
+  if (error) {
+    console.log(error.message)
+    return
+  }
+
+  setNewestMeals(data)
+}
+
+
+
 
   return (
     <div>
@@ -50,7 +68,12 @@ function App() {
         <input name="serves" type="number" placeholder="Serves" min="1" required />
         <button>Add</button>
       </form>
-
+        
+      <button onClick={loadNewest}>Newest first</button>
+      {newestMeals.map((meal) => (
+        <p key={meal.id}>{meal.meal_name}</p>
+      ))}
+      
       <p>{error}</p>
       {data.map((meal) => <MealCard key={meal.id} meal={meal} onRemove={removeMeal} />)}
     </div>
